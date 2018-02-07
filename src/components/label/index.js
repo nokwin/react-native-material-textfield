@@ -35,6 +35,8 @@ export default class Label extends PureComponent {
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node,
     ]),
+
+    overrideLabelStyle: Animated.Text.propTypes.style,
   };
 
   constructor(props) {
@@ -89,9 +91,10 @@ export default class Label extends PureComponent {
       basePadding,
       style,
       errored,
-      active, 
+      active,
       focused,
       animationDuration,
+      overrideLabelStyle,
       ...props
     } = this.props;
 
@@ -126,7 +129,7 @@ export default class Label extends PureComponent {
 
     return (
       <Animated.View style={containerStyle}>
-        <Animated.Text style={[style, textStyle]} {...props}>
+        <Animated.Text style={[style, textStyle, overrideLabelStyle]} {...props}>
           {children}
         </Animated.Text>
       </Animated.View>
